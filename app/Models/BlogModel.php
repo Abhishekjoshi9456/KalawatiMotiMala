@@ -17,6 +17,7 @@ class BlogModel extends Model
         'blog_photo',
         'user_id',
         'status',
+        'active_status',
         'created_at',
         'updated_at'
     ];

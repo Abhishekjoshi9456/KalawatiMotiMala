@@ -28,7 +28,7 @@
                     <div class="card p-3">
                         <h2>Product</h2>
                         <p>Totle : 10</p>
-                        <a href="product-list.php" class="btn btn-primary">Product List</a>
+                        <a href="{{ route('product-list') }}" class="btn btn-primary">Product List</a>
                     </div>
                 </div>
                 <div class="col-md-3">

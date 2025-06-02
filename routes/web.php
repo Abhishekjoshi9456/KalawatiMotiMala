@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ToggleController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +27,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/update-blog/{slug}', [BlogController::class, 'UpdateBlog'])->name('update-blog');
     Route::post('/update/{slug}', [BlogController::class, 'updateBlogsData'])->name('update.blogs');
     Route::get('/delete-blog/{id}', [BlogController::class, 'DeleteBlog'])->name('delete-blog');
+    Route::post('/toggle-status', [ToggleController::class, 'BlogStatus'])->name('toggle-status');
+    ROute::get('/product-list', [ProductController::class, 'productList'])->name('product-list');
 });
 
 

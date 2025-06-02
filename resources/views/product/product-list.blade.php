@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Blog List | Kalawati Moti Mala</title>
+    <title>Product List | Kalawati Moti Mala</title>
     @include ('include.link')
 
     <meta name="robots" content="noindex, nofollow">
@@ -23,58 +23,60 @@
                 <table class="table table-bordered bg-light">
                     <thead>
                         <tr>
-                            <th colspan="3">Blog List</th>
+                            <th colspan="3">Product List</th>
                             <th colspan="3" class="text-end">
                                 <a href="{{ route('add-blogs')}}" class="btn btn-primary"><i
                                         class="fas fa-plus me-2"></i> Add
-                                    Blog</a>
+                                    Product</a>
                             </th>
                         </tr>
                         <tr>
                             <th>S.NO.</th>
                             <th>Image</th>
                             <th scope="col" width="300">Title</th>
+                            <th scope="col" width="80">Price</th>
                             <th scope="col">Description</th>
                             <th scope="col">Status</th>
                             <th class="text-end" scope="col" width="100">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($blogData as $index => $blog)
+                        @foreach ($productData as $index => $product)
 
                             <tr>
-                                <td>{{ $blogData->firstItem() + $index }}</td>
-                                <td><img src="{{ asset('storage/BlogImages/' . $blog->blog_photo)}}" alt=""
-                                        class="img-fluid bg-white p-2 rounded-3" width="100"></td>
-                                <td>{{$blog->meta_title}}</td>
-                                <td>{{$blog->meta_description}}</td>
-                                <td class="text-center"> <button class="btn btn-link toggle-btn" type="button" data-id="{{ $blog->blog_id }}">
+                                <td>{{ $productData->firstItem() + $index }}</td>
+                                <td><img src="{{ asset('storage/ProductImages/' . $product->product_image)}}" alt=""
+                                        class="img-fluid bg-white p-2 rounded-3" width="50"></td>
+                                <td>{{$product->product_title}}</td>
+                                <td>{{ $product->product_price}} Rs.</td>
+                                <td>{{$product->meta_description}}</td>
+                                <td class="text-center"> <button class="btn btn-link toggle-btn" type="button"
+                                        data-id="{{ $product->product_id }}">
                                         <i
-                                            class="{{ $blog->active_status == '1' ? "fas fa-toggle-on" : "fas fa-toggle-off" }}"></i>
+                                            class="{{ $product->status == '1' ? "fas fa-toggle-on" : "fas fa-toggle-off" }}"></i>
                                     </button>
-                                    <span
-                                        class="status-text {{ $blog->active_status == '1' ? 'bg-success' : 'bg-danger' }}"
-                                        data-id="{{ $blog->blog_id }}" style="font-size:11px;">
-                                        {{ $blog->active_status == '1' ? 'Active' : 'Inactive' }}
+                                    <span class="status-text {{ $product->status == '1' ? 'bg-success' : 'bg-danger' }}"
+                                        data-id="{{ $product->blog_id }}" style="font-size:11px;">
+                                        {{ $product->status == '1' ? 'Active' : 'Inactive' }}
                                     </span>
                                 </td>
                                 <td class="text-end">
                                     <div>
                                         <button class="btn btn-link p-0 text-dark" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="View">
-                                            <a href="{{ route('blog.show', $blog->slug) }}"><span
+                                            <a href="{{ route('blog.show', $product->slug) }}"><span
                                                     class="fas fa-eye"></span></a>
                                         </button>
 
                                         <button class="btn btn-link p-0 text-dark ms-2" type="button"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                            <a href="{{ route('update-blog', $blog->slug) }}"><span
+                                            <a href="{{ route('update-blog', $product->slug) }}"><span
                                                     class="fas fa-edit"></span></a>
 
                                         </button>
 
                                         <button class="btn btn-link p-0 text-dark ms-2" type="button"
-                                            onclick="confirmDelete('{{ route('delete-blog', $blog->slug) }}')"
+                                            onclick="confirmDelete('{{ route('delete-blog', $product->slug) }}')"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                                             <span class="fas fa-trash-alt"></span>
                                         </button>
@@ -86,7 +88,7 @@
                     </tbody>
                 </table>
 
-                {{ $blogData->links('pagination::bootstrap-5') }}
+                {{ $productData->links('pagination::bootstrap-5') }}
             </div>
 
         </div>
