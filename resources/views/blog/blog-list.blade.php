@@ -24,7 +24,8 @@
                         <tr>
                             <th colspan="3">Blog List</th>
                             <th colspan="2" class="text-end">
-                                <a href="{{ route('add-blogs')}}" class="btn btn-primary"><i class="fas fa-plus me-2"></i> Add
+                                <a href="{{ route('add-blogs')}}" class="btn btn-primary"><i
+                                        class="fas fa-plus me-2"></i> Add
                                     Blog</a>
                             </th>
                         </tr>
@@ -33,38 +34,43 @@
                             <th>Image</th>
                             <th scope="col" width="300">Title</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Status</th>
                             <th class="text-end" scope="col" width="100">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($blogData as $index => $blog)
 
-                        <tr>
-                            <td>{{ $blogData->firstItem() + $index }}</td>
-                            <td><img src="{{ asset('storage/BlogImages/'. $blog->blog_photo)}}" alt="" class="img-fluid bg-white p-2 rounded-3" width="100"></td>
-                            <td>{{$blog->meta_title}}</td>
-                            <td>{{$blog->meta_description}}</td>
-                            <td class="text-end">
-                                <div>
-                                    <button class="btn btn-link p-0 text-dark" type="button" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="View">
-                                        <a href="{{ route('blog.show', $blog->slug) }}"><span class="fas fa-eye"></span></a>
-                                    </button>
+                            <tr>
+                                <td>{{ $blogData->firstItem() + $index }}</td>
+                                <td><img src="{{ asset('storage/BlogImages/' . $blog->blog_photo)}}" alt=""
+                                        class="img-fluid bg-white p-2 rounded-3" width="100"></td>
+                                <td>{{$blog->meta_title}}</td>
+                                <td>{{$blog->meta_description}}</td>
+                                <td><i class="fas fa-toggle-on"></i></td>
+                                <td class="text-end">
+                                    <div>
+                                        <button class="btn btn-link p-0 text-dark" type="button" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="View">
+                                            <a href="{{ route('blog.show', $blog->slug) }}"><span
+                                                    class="fas fa-eye"></span></a>
+                                        </button>
 
-                                    <button class="btn btn-link p-0 text-dark ms-2" type="button"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                        <a href="{{ route('update-blog', $blog->slug) }}"><span class="fas fa-edit"></span></a>
+                                        <button class="btn btn-link p-0 text-dark ms-2" type="button"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                            <a href="{{ route('update-blog', $blog->slug) }}"><span
+                                                    class="fas fa-edit"></span></a>
 
-                                    </button>
+                                        </button>
 
-                                    <button class="btn btn-link p-0 text-dark ms-2" type="button"
-                                        onclick="confirmDelete('{{ route('delete-blog', $blog->slug) }}')"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
-                                        <span class="fas fa-trash-alt"></span>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
+                                        <button class="btn btn-link p-0 text-dark ms-2" type="button"
+                                            onclick="confirmDelete('{{ route('delete-blog', $blog->slug) }}')"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
+                                            <span class="fas fa-trash-alt"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
 
                         @endforeach
                     </tbody>
