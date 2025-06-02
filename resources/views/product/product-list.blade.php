@@ -25,7 +25,7 @@
                         <tr>
                             <th colspan="3">Product List</th>
                             <th colspan="4" class="text-end">
-                                <a href="{{ route('add-blogs')}}" class="btn btn-primary"><i
+                                <a href="{{ route('add-product')}}" class="btn btn-primary"><i
                                         class="fas fa-plus me-2"></i> Add
                                     Product</a>
                             </th>
