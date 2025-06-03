@@ -93,9 +93,10 @@ class ProductController extends Controller
 
     }
 
-    public function ProductEdit()
+    public function ProductEdit($slug)
     {
-
+        $data = ProductModel::where('slug', $slug)->first();
+        return view('product.edit-product', ['product' => $data]);
     }
 
     public function ProductDelete()
