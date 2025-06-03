@@ -97,8 +97,14 @@ class ProductController extends Controller
     public function ProductEdit($slug)
     {
         $data = ProductModel::where('slug', $slug)->first();
-        $productImage = ProductImageModel::where(['ref_id'=> $data->product_id, 'status'=>'Active']);
-        return view('product.edit-product', ['product' => $data]);
+        // dd($data);
+        $productImage = ProductImageModel::where([
+            'ref_id' => $data->product_id,
+            'status' => 'Active'
+        ])->get();
+        $productImages = $productImage->pluck('product_img')->toArray();
+
+        return view('product.edit-product', ['product' => $data, 'productImage' => $productImages]);
     }
 
     public function ProductDelete()
