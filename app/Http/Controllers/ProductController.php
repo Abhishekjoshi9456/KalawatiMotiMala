@@ -80,9 +80,7 @@ class ProductController extends Controller
 
                     DB::table('product_image')->insert([
                         'ref_id' => $product->product_id,
-                        'product_img' => $imageName,
-                        'created_at' => now(),
-                        'updated_at' => now(),
+                        'product_img' => $imageName
                     ]);
                 }
             }
