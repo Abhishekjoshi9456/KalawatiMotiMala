@@ -64,19 +64,19 @@
                                     <div>
                                         <button class="btn btn-link p-0 text-dark" type="button" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="View">
-                                            <a href="{{ route('blog.show', $product->slug) }}"><span
+                                            <a href="{{ route('product.show', $product->slug) }}"><span
                                                     class="fas fa-eye"></span></a>
                                         </button>
 
                                         <button class="btn btn-link p-0 text-dark ms-2" type="button"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
-                                            <a href="{{ route('update-blog', $product->slug) }}"><span
+                                            <a href="{{ route('update-product', $product->slug) }}"><span
                                                     class="fas fa-edit"></span></a>
 
                                         </button>
 
                                         <button class="btn btn-link p-0 text-dark ms-2" type="button"
-                                            onclick="confirmDelete('{{ route('delete-blog', $product->slug) }}')"
+                                            onclick="confirmDelete('{{ route('delete-product', $product->slug) }}')"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                                             <span class="fas fa-trash-alt"></span>
                                         </button>

@@ -88,4 +88,16 @@ class ProductController extends Controller
             return redirect()->route('product-list')->with('success', 'Product and images saved successfully!');
         }
     }
+
+    public function ProductShow(){
+
+    }
+
+    public function ProductEdit(){
+
+    }
+
+    public function ProductDelete(){
+        
+    }
 }

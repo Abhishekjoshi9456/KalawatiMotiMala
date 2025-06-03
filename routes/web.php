@@ -31,6 +31,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/product-list', [ProductController::class, 'productList'])->name('product-list');
     Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
     Route::post('/insert-product', [ProductController::class, 'insertProduct'])->name('insert-product');
+    
+    Route::get('/product-show/{slug}', [ProductController::class, 'ProductShow'])->name('product.show');
+    Route::get('/product-update', [ProductController::class, 'ProductEdit'])->name('update-product');
+    Route::get('/product-delete', [ProductController::class, 'ProductDelete'])->name('delete-product');
 });
 
 
