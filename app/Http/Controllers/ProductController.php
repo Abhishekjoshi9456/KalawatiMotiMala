@@ -45,7 +45,7 @@ class ProductController extends Controller
         } else {
             $product = new ProductModel();
             $product->product_title = $request->product_title;
-            $product->category = $request->category;
+            $product->product_category = $request->category;
             $product->pro_short_des = $request->pro_short_des;
             $product->pro_description = $request->pro_description;
             $product->meta_keyword = $request->meta_keyword;
