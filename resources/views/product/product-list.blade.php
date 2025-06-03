@@ -45,7 +45,7 @@
 
                             <tr>
                                 <td>{{ $productData->firstItem() + $index }}</td>
-                                <td><img src="{{ asset('storage/ProductImages/' . $product->product_image)}}" alt=""
+                                <td><img src="{{ asset('storage/ProductImages/' . $product->meta_image)}}" alt=""
                                         class="img-fluid bg-white p-2 rounded-3" width="50"></td>
                                 <td>{{$product->product_title}}</td>
                                 <td>{{ $product->product_price}} Rs.</td>
