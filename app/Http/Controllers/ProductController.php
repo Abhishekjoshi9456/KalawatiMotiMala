@@ -11,9 +11,8 @@ class ProductController extends Controller
 {
     public function productList()
     {
-        $productData = ProductModel::where('products.del_action', 'Active')
-            ->leftjoin('product_image', 'products.product_id', '=', 'product_image.ref_id')
-            ->select('products.*', 'product_image.product_img as product_image')->orderBy('products.product_id', 'desc')
+        $productData = ProductModel::where('del_action', 'Active')
+            ->orderBy('product_id', 'desc')
             ->paginate(10);
 
         return view('product.product-list', ['productData' => $productData]);
@@ -72,7 +71,7 @@ class ProductController extends Controller
             }
 
             $product->save();
-            
+
             if ($request->hasFile('pro_imageMulti')) {
                 foreach ($request->file('pro_imageMulti') as $image) {
                     $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
@@ -89,15 +88,18 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductShow(){
+    public function ProductShow()
+    {
 
     }
 
-    public function ProductEdit(){
+    public function ProductEdit()
+    {
 
     }
 
-    public function ProductDelete(){
+    public function ProductDelete()
+    {
 
     }
 }
