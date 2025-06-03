@@ -73,14 +73,13 @@ class ProductController extends Controller
 
             $product->save();
             
-           echo $product->getKey(); die;
             if ($request->hasFile('pro_imageMulti')) {
                 foreach ($request->file('pro_imageMulti') as $image) {
                     $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
                     $image->move(public_path('storage/ProductImages'), $imageName);
 
                     DB::table('product_image')->insert([
-                        'ref_id' => $product->product_id,
+                        'ref_id' => $product->getKey(),
                         'product_img' => $imageName
                     ]);
                 }
