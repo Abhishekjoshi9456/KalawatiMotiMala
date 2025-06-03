@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductModel extends Model
 {
-    protected $primaryKey = 'product_id  ';
     protected $table = 'products';
+    protected $primaryKey = 'product_id  ';
+    public $incrementing = true;
+    protected $keyType = 'int';
     protected $fillable = [
         'product_title',
         'slug',
