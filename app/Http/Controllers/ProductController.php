@@ -96,6 +96,7 @@ class ProductController extends Controller
     public function ProductEdit($slug)
     {
         $data = ProductModel::where('slug', $slug)->first();
+        $productImage = ProductImageModel::where(['ref_id'=> $data->product_id, 'status'=>'Active']);
         return view('product.edit-product', ['product' => $data]);
     }
 
