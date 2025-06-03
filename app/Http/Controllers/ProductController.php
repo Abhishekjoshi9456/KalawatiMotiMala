@@ -72,8 +72,7 @@ class ProductController extends Controller
             }
 
             $product->save();
-            dd($product);
-            echo $product->product_id ?? "not set"; die;
+            echo ProductModel::select('product_id') ?? "not set"; die;
             if ($request->hasFile('pro_imageMulti')) {
                 foreach ($request->file('pro_imageMulti') as $image) {
                     $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
