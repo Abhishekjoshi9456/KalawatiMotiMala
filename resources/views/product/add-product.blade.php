@@ -165,7 +165,7 @@
 </html>
 <script>
     $(document).ready(function () {
-        $('#page_description').summernote({
+        $('#pro_description').summernote({
             height: 200,
             toolbar: [
                 ['style', ['style']],
