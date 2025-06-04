@@ -69,7 +69,7 @@
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
                             </div>
                         </div>
-                        @error('pro_imageMulti')
+                        @error('pro_imageMulti.*')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                         <button type="button" id="addFileInput" class="btn btn-success">
