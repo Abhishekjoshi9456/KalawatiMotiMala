@@ -37,7 +37,7 @@ class BlogController extends Controller
                 $image = $request->file('meta_image');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 // $image->move(public_path('asset/images/BlogImages'), $imageName);
-                $image->storeAs('BlogImages', $imageName, 'public');
+                $image->move(public_path('storage/BlogImages'), $imageName);
                 $blogModel->blog_photo = $imageName;
             }
             $blogModel->meta_title = $request->meta_title;
@@ -87,7 +87,8 @@ class BlogController extends Controller
                 $image = $request->file('meta_image');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
                 // $image->move(public_path('asset/images/BlogImages'), $imageName);
-                $image->storeAs('BlogImages', $imageName, 'public');
+                 $image->move(public_path('storage/BlogImages'), $imageName);
+
             }
 
             $data = [
