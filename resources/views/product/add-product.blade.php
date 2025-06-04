@@ -64,9 +64,9 @@
                     <!-- Product Images -->
                     <div class="form-group mb-3">
                         <label for="pro_imageMulti">Upload Images <span class="text-danger">*</span></label>
-                        @error('pro_imageMulti.*')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        @if ($errors->has('pro_imageMulti'))
+                            <span class="text-danger">{{ $errors->first('pro_imageMulti') }}</span>
+                        @endifß
                         <div id="fileInputs">
                             <div class="input-group mb-2">
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
