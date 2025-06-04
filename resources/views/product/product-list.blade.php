@@ -120,7 +120,7 @@
             icon.toggleClass('fa-toggle-on fa-toggle-off');
 
             $.ajax({
-                url: '/toggle-status-project',
+                url: '/toggle-status-product',
                 type: 'POST',
                 data: {
                     id: id,

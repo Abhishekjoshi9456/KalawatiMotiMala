@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/update/{slug}', [BlogController::class, 'updateBlogsData'])->name('update.blogs');
     Route::get('/delete-blog/{id}', [BlogController::class, 'DeleteBlog'])->name('delete-blog');
     Route::post('/toggle-status', [ToggleController::class, 'BlogStatus'])->name('toggle-status');
+    Route::get('/toggle-status-product', [ToggleController::class, 'productStatus'])->name('toggle-status-product');
     Route::get('/product-list', [ProductController::class, 'productList'])->name('product-list');
     Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
     Route::post('/insert-product', [ProductController::class, 'insertProduct'])->name('insert-product');
