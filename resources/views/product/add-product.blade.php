@@ -190,7 +190,7 @@
                 inputCount++;
                 const newInput = `
           <div class="input-group mb-2">
-            <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*" required   >
+            <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
             <button type="button" class="btn btn-danger remove-btn" ><i class="fas fa-trash-alt"></i></button>
           </div>`;
                 $('#fileInputs').append(newInput);
