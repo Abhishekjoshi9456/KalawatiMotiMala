@@ -89,10 +89,7 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductShow()
-    {
-
-    }
+    public function ProductShow() {}
 
     public function ProductEdit($slug)
     {
@@ -107,8 +104,25 @@ class ProductController extends Controller
         return view('product.edit-product', ['product' => $data, 'productImage' => $productImages]);
     }
 
-    public function ProductDelete()
+    public function UpdateProduct(Request $request, $id)
     {
-
+        $validator = Validator::make($request->all(), [
+            'product_title' => 'required|string|max:255',
+            'category' => 'required|string',
+            'pro_short_des' => 'required|string',
+            'pro_imageMulti.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'pro_video' => 'mimetypes:video/mp4,video/x-m4v,video/*|max:20000',
+            'meta_keyword' => 'required|string|max:255',
+            'meta_description' => 'required|string|max:500',
+            'meta_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'product_size' => 'required|digits_between:1,10',
+            'product_price' => 'required|numeric|min:0',
+            'modal_id' => 'required|string|max:100',
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
     }
+
+    public function ProductDelete() {}
 }
