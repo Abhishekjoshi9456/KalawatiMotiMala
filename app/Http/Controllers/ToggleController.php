@@ -22,4 +22,8 @@ class ToggleController extends Controller
         }
 
     }
+
+    public function productStatus(Request $request){
+        echo "done";
+    }
 }
