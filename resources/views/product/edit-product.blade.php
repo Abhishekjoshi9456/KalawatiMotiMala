@@ -16,8 +16,7 @@
     <!-- Main Content Area -->
     <main class="main-content">
         <div class="container-fluid">
-            <form action="{{ route('edit-product', $product->product_id) }}" method="POST"
-                enctype="multipart/form-data">
+            <form action="{{ route('edit-product', $product->product_id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row g-2">
 
@@ -41,17 +40,20 @@
                         </label>
                         <select class="form-select" name="category" id="category">
                             <option value="">Select Category</option>
-                            <option value="Moti Mala" {{ old('category', $product->product_category) == 'Moti Mala' ? 'selected' : '' }}>Moti Mala
+                            <option value="Moti Mala"
+                                {{ old('category', $product->product_category) == 'Moti Mala' ? 'selected' : '' }}>Moti
+                                Mala
                             </option>
-                            <option value="Barati Moti Mala" {{ old('category', $product->product_category) == 'Barati Moti Mala' ? 'selected' : '' }}>Barati Moti Mala</option>
+                            <option value="Barati Moti Mala"
+                                {{ old('category', $product->product_category) == 'Barati Moti Mala' ? 'selected' : '' }}>
+                                Barati Moti Mala</option>
                         </select>
                     </div>
 
                     <!-- Product Details -->
                     <div class="form-group mb-3">
                         <label for="pro_short_des">Product Details <span class="text-danger">*</span></label>
-                        <textarea name="pro_short_des" id="pro_short_des" class="form-control"
-                            placeholder="Enter Product Details">{{ old('pro_short_des', $product->pro_short_des) }}</textarea>
+                        <textarea name="pro_short_des" id="pro_short_des" class="form-control" placeholder="Enter Product Details">{{ old('pro_short_des', $product->pro_short_des) }}</textarea>
                         @error('pro_short_des')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -60,8 +62,7 @@
                     <!-- Product More Details -->
                     <div class="form-group mb-3">
                         <label for="pro_description">Product More Details</label>
-                        <textarea name="pro_description" id="pro_description" class="form-control"
-                            placeholder="Enter Product Long Description">{{ old('pro_description', $product->pro_description) }}</textarea>
+                        <textarea name="pro_description" id="pro_description" class="form-control" placeholder="Enter Product Long Description">{{ old('pro_description', $product->pro_description) }}</textarea>
                     </div>
 
                     <!-- Product Images -->
@@ -72,11 +73,28 @@
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
 
                             </div>
-                            @foreach($productImage as $image)
-                                <input type="hidden" name="proimageMulti[]" value="{{ $image }}">
-                               <img src="{{ asset('storage/ProductImages/' . $image)}}" alt=""
-                                    class="img-fluid bg-white p-2 rounded-3" width="50"></td>
-                            @endforeach
+                            <div class="row g-2" id="existingImagesWrapper">
+                                @foreach ($productImage as $index => $image)
+                                    <div class="col-4 col-sm-3 col-md-2 position-relative image-box"
+                                        data-index="{{ $index }}">
+                                        <input type="hidden" name="proimageMulti[]" value="{{ $image }}">
+
+                                        <div class="border rounded-3 p-1 position-relative">
+                                            <img src="{{ asset('storage/ProductImages/' . $image) }}"
+                                                alt="Product Image" class="img-fluid rounded"
+                                                style="aspect-ratio: 1; object-fit: cover; width: 100%;">
+
+                                            <button type="button"
+                                                class="btn btn-sm btn-danger rounded-circle position-absolute top-0 end-0 translate-middle remove-image"
+                                                data-index="{{ $index }}"
+                                                style="z-index: 2; width: 1.5rem; height: 1.5rem; line-height: 1rem; padding: 0;">
+                                                &times;
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+
                         </div>
                         @error('pro_imageMulti')
                             <span class="text-danger">{{ $message }}</span>
@@ -97,8 +115,7 @@
                     <!-- Meta Keyword -->
                     <div class="form-group mb-3">
                         <label for="meta_keyword">Meta Keyword <span class="text-danger">*</span></label>
-                        <textarea name="meta_keyword" id="meta_keyword" class="form-control"
-                            placeholder="Enter Meta Keyword">{{ old('meta_keyword', $product->meta_keyword) }}</textarea>
+                        <textarea name="meta_keyword" id="meta_keyword" class="form-control" placeholder="Enter Meta Keyword">{{ old('meta_keyword', $product->meta_keyword) }}</textarea>
                         @error('meta_keyword')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -107,8 +124,7 @@
                     <!-- Meta Description -->
                     <div class="form-group mb-3">
                         <label for="meta_description">Meta Description <span class="text-danger">*</span></label>
-                        <textarea name="meta_description" id="meta_description" class="form-control"
-                            placeholder="Enter Meta Description">{{ old('meta_description', $product->meta_description) }}</textarea>
+                        <textarea name="meta_description" id="meta_description" class="form-control" placeholder="Enter Meta Description">{{ old('meta_description', $product->meta_description) }}</textarea>
                         @error('meta_description')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -117,11 +133,12 @@
                     <!-- Meta Image -->
                     <div class="form-group mb-3">
                         <label for="meta_image">Upload Meta Image <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="meta_image" id="meta_image" accept="image/*">
+                        <input type="file" class="form-control" name="meta_image" id="meta_image"
+                            accept="image/*">
 
-                        <input type="hidden" value="{{ $product->meta_image}}" name="meta_old_img">
-                         <img src="{{ asset('storage/ProductImages/' . $product->meta_image)}}" alt=""
-                                        class="img-fluid bg-white p-2 rounded-3" width="50"></td>
+                        <input type="hidden" value="{{ $product->meta_image }}" name="meta_old_img">
+                        <img src="{{ asset('storage/ProductImages/' . $product->meta_image) }}" alt=""
+                            class="img-fluid bg-white p-2 rounded-3" width="50"></td>
                         @error('meta_image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -131,8 +148,8 @@
                     <div class="form-group mb-3">
                         <label for="product_size">Size <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="product_size" name="product_size"
-                            placeholder="Enter Size" value="{{ old('product_size',$product->product_size) }}" maxlength="10"
-                            oninput="this.value = this.value.replace(/\D/g, '')">
+                            placeholder="Enter Size" value="{{ old('product_size', $product->product_size) }}"
+                            maxlength="10" oninput="this.value = this.value.replace(/\D/g, '')">
                         @error('product_size')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -142,8 +159,8 @@
                     <div class="form-group mb-3">
                         <label for="product_price">Price <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="product_price" name="product_price"
-                            placeholder="Enter Price" value="{{ old('product_price',$product->product_price) }}" maxlength="10"
-                            oninput="this.value = this.value.replace(/\D/g, '')">
+                            placeholder="Enter Price" value="{{ old('product_price', $product->product_price) }}"
+                            maxlength="10" oninput="this.value = this.value.replace(/\D/g, '')">
                         @error('product_price')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -176,7 +193,7 @@
 
 </html>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#pro_description').summernote({
             height: 200,
             toolbar: [
@@ -193,12 +210,12 @@
     });
 </script>
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         const maxInputs = 5; // Maximum number of input fields allowed
         let inputCount = 1; // Track the number of input fields
 
         // Handle the "Add More" button click
-        $('#addFileInput').on('click', function () {
+        $('#addFileInput').on('click', function() {
             if (inputCount < maxInputs) {
                 inputCount++;
                 const newInput = `
@@ -213,9 +230,23 @@
         });
 
         // Handle the "Remove" button click
-        $('#fileInputs').on('click', '.remove-btn', function () {
+        $('#fileInputs').on('click', '.remove-btn', function() {
             $(this).closest('.input-group').remove();
             inputCount--;
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const wrapper = document.getElementById('existingImagesWrapper');
+
+        wrapper.addEventListener('click', function(e) {
+            if (e.target.classList.contains('remove-image')) {
+                const index = e.target.getAttribute('data-index');
+                const box = wrapper.querySelector('.image-box[data-index="' + index + '"]');
+                if (box) box.remove();
+            }
         });
     });
 </script>
