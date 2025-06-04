@@ -71,12 +71,12 @@
                             <div class="input-group mb-2">
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
 
-                                @foreach($productImage as $image)
-                                    <input type="text" name="proimageMulti[]" value="{{ $image }}">
-                                   <img src="{{ asset('storage/ProductImages/' . $image)}}" alt=""
-                                        class="img-fluid bg-white p-2 rounded-3" width="50"></td>
-                                @endforeach
                             </div>
+                            @foreach($productImage as $image)
+                                <input type="text" name="proimageMulti[]" value="{{ $image }}">
+                               <img src="{{ asset('storage/ProductImages/' . $image)}}" alt=""
+                                    class="img-fluid bg-white p-2 rounded-3" width="50"></td>
+                            @endforeach
                         </div>
                         @error('pro_imageMulti')
                             <span class="text-danger">{{ $message }}</span>
@@ -201,7 +201,7 @@
                 inputCount++;
                 const newInput = `
           <div class="input-group mb-2">
-            <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*" required   >
+            <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*"   >
             <button type="button" class="btn btn-danger remove-btn" ><i class="fas fa-trash-alt"></i></button>
           </div>`;
                 $('#fileInputs').append(newInput);

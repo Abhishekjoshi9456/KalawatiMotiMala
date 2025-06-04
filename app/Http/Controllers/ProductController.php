@@ -110,7 +110,7 @@ class ProductController extends Controller
             'product_title' => 'required|string|max:255',
             'category' => 'required|string',
             'pro_short_des' => 'required|string',
-            'pro_imageMulti.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'pro_imageMulti.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20000',
             'pro_video' => 'mimetypes:video/mp4,video/x-m4v,video/*|max:20000',
             'meta_keyword' => 'required|string|max:255',
             'meta_description' => 'required|string|max:500',
