@@ -73,6 +73,8 @@
 
                                 @foreach($productImage as $image)
                                     <input type="text" name="proimageMulti[]" value="{{ $image }}">
+                                   <img src="{{ asset('storage/ProductImages/' . $image)}}" alt=""
+                                        class="img-fluid bg-white p-2 rounded-3" width="50"></td>
                                 @endforeach
                             </div>
                         </div>
@@ -116,6 +118,8 @@
                         <label for="meta_image">Upload Meta Image <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="meta_image" id="meta_image" accept="image/*">
                         <input type="text" value="{{ $product->meta_image}}" name="meta_old_img">
+                         <img src="{{ asset('storage/ProductImages/' . $product->meta_image)}}" alt=""
+                                        class="img-fluid bg-white p-2 rounded-3" width="50"></td>
                         @error('meta_image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
