@@ -64,14 +64,15 @@
                     <!-- Product Images -->
                     <div class="form-group mb-3">
                         <label for="pro_imageMulti">Upload Images <span class="text-danger">*</span></label>
+                        @error('pro_imageMulti.*')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                         <div id="fileInputs">
                             <div class="input-group mb-2">
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
                             </div>
                         </div>
-                        @error('pro_imageMulti.*')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
+
                         <button type="button" id="addFileInput" class="btn btn-success">
                             <i class="fas fa-plus-circle"></i>
                         </button>
