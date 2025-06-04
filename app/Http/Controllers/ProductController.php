@@ -159,12 +159,17 @@ class ProductController extends Controller
 
             if (ProductModel::where('product_id', $id)->update($data)) {
 
-                foreach ($request->proimageMulti as $proimageMultiOld) {
+                if ($request->has('proimageMulti')) {
+                    DB::table('product_image')->where('ref_id', $id)->delete();
 
-                    DB::table('product_image')->where('ref_id', $id)->update([
-                        'product_img' => $proimageMultiOld
-                    ]);
+                    foreach ($request->proimageMulti as $oldImage) {
+                        DB::table('product_image')->insert([
+                            'ref_id' => $id,
+                            'product_img' => $oldImage
+                        ]);
+                    }
                 }
+
                 if ($request->hasFile('pro_imageMulti')) {
                     foreach ($request->file('pro_imageMulti') as $image) {
                         $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
@@ -175,10 +180,8 @@ class ProductController extends Controller
                             'product_img' => $imageName
                         ]);
                     }
-                    return redirect()->route('product-list')->with('success', 'Product and images updated successfully!');
-                }else{
-                    return redirect()->back()->with('error', 'Product not updated!');
                 }
+                return redirect()->route('product-list')->with('success', 'Product and images updated successfully!');
             } else {
                 return redirect()->back()->with('error', 'Product not updated!');
             }
