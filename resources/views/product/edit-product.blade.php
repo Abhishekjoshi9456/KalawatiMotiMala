@@ -70,7 +70,7 @@
                         <div id="fileInputs">
                             <div class="input-group mb-2">
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
-                               
+
                                 @foreach($productImage as $image)
                                     <input type="text" name="proimageMulti[]" value="{{ $image }}">
                                 @endforeach
@@ -88,7 +88,7 @@
                     <div class="form-group mb-3">
                         <label for="pro_video">Upload Video</label>
                         <input type="file" class="form-control" name="pro_video" id="pro_video" accept="video/*">
-                        <input type="text" value="{{ old($product->pro_video) }}" name="pro_video_old">
+                        <input type="text" value="{{ $product->pro_video }}" name="pro_video_old">
                     </div>
 
                     <!-- Meta Keyword -->
@@ -115,7 +115,7 @@
                     <div class="form-group mb-3">
                         <label for="meta_image">Upload Meta Image <span class="text-danger">*</span></label>
                         <input type="file" class="form-control" name="meta_image" id="meta_image" accept="image/*">
-                        <input type="text" value="{{ old($product->meta_image)}}" name="meta_old_img">
+                        <input type="text" value="{{ $product->meta_image}}" name="meta_old_img">
                         @error('meta_image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
