@@ -24,6 +24,12 @@ class ToggleController extends Controller
     }
 
     public function productStatus(Request $request){
-        echo "done";
+       $id = $request->input('id');
+        $status = $request->input('status');
+        if(BlogModel::where('product_id', $id)->update(['status'=> $status])){
+            return "success";
+        }else{
+            return "error";
+        }
     }
 }
