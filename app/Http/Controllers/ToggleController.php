@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlogModel;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 
 class ToggleController extends Controller
 {
-    public function BlogStatus(Request $request){
+    public function BlogStatus(Request $request)
+    {
         $id = $request->input('id');
         $status = $request->input('status');
 
@@ -15,20 +17,20 @@ class ToggleController extends Controller
         //     'id' => $id,
         //     'status' => $status
         // ]);
-        if(BlogModel::where('blog_id', $id)->update(['active_status'=> $status])){
+        if (BlogModel::where('blog_id', $id)->update(['active_status' => $status])) {
             return "success";
-        }else{
+        } else {
             return "error";
         }
-
     }
 
-    public function productStatus(Request $request){
-       $id = $request->input('id');
+    public function productStatus(Request $request)
+    {
+        $id = $request->input('id');
         $status = $request->input('status');
-        if(BlogModel::where('product_id', $id)->update(['status'=> $status])){
+        if (ProductModel::where('product_id', $id)->update(['status' => $status])) {
             return "success";
-        }else{
+        } else {
             return "error";
         }
     }
