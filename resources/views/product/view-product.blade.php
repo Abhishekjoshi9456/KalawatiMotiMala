@@ -318,7 +318,7 @@
                 method: 'POST',
                 data: data,
                 success: function(response) {
-                    alert("Enquiry Sent Successfully!");
+                    alert(response);
                     // $('#enquiryForm')[0].reset();
                     // $('#enquiryModal').modal('hide');
                 },

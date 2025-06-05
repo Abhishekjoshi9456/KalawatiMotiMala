@@ -21,6 +21,6 @@ class EnquiryController extends Controller
         // Here you would typically save the enquiry to the database
         // For now, we will just return a success message
 
-        return back()->with('success', 'Enquiry sent successfully!');
+        return  'Enquiry sent successfully!';
     }
 }
