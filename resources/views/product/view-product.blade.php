@@ -132,7 +132,7 @@
                             <!-- Description -->
                             <h5 class="mt-4"><b>Description</b></h5>
                             <p>{{ $product->pro_short_des }}</p>
-                            <p><b>{{ $product->pro_description }}</b></p>
+                            <p><b>{!! $product->pro_description !!}</b></p>
                         </div>
                     </div>
                 </div>
