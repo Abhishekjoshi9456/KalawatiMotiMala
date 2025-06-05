@@ -40,6 +40,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/product-delete/{id}', [ProductController::class, 'ProductDelete'])->name('delete-product');
 
     Route::get('/enquiry-list', [EnquiryController::class, 'enquiryList'])->name('enquiry-list');
+    Route::post('/send-enquiry', [EnquiryController::class, 'SendEnquery'])->name('send.enquiry');
 });
 
 

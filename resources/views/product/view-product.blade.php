@@ -126,37 +126,42 @@
                                                 class="img-fluid mb-2" style="max-height: 200px;">
                                             <form>
                                                 <div class="mb-3">
+                                                    <input type="hidden" name="product_id" id="product_id"
+                                                        value="{{ $product->product_id }}">
                                                     <label for="enquiryName" class="form-label">Your Name</label>
                                                     <input type="text" class="form-control" id="enquiryName"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="enquiryName" class="form-label">Your Number</label>
-                                                    <input type="text" class="form-control" id="enquiryName"
+                                                    <label for="enquiryNumber" class="form-label">Your Number</label>
+                                                    <input type="text" class="form-control" id="enquiryNumber"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="enquiryName" class="form-label">Your Email</label>
-                                                    <input type="text" class="form-control" id="enquiryName"
+                                                    <label for="enquiryEmail" class="form-label">Your Email</label>
+                                                    <input type="text" class="form-control" id="enquiryEmail"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="enquiryName" class="form-label">Location</label>
-                                                    <input type="text" class="form-control" id="enquiryName"
+                                                    <label for="enquiryLocation" class="form-label">Location</label>
+                                                    <input type="text" class="form-control" id="enquiryLocation"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="enquiryName" class="form-label">Enter Your PinCode</label>
-                                                    <input type="text" class="form-control" id="enquiryName"
+                                                    <label for="enquiryPinCode" class="form-label">Enter Your
+                                                        PinCode</label>
+                                                    <input type="text" class="form-control" id="enquiryPinCode"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="enquiryName" class="form-label">Enter Your Quentity</label>
-                                                    <input type="text" class="form-control" id="enquiryName"
+                                                    <label for="enquiryQuentity" class="form-label">Enter Your
+                                                        Quentity</label>
+                                                    <input type="text" class="form-control" id="enquiryQuentity"
                                                         required>
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="enquiryMessage" class="form-label">Type Your Message</label>
+                                                    <label for="enquiryMessage" class="form-label">Type Your
+                                                        Message</label>
                                                     <textarea class="form-control" id="enquiryMessage" rows="3"></textarea>
                                                 </div>
                                                 <!-- Add more fields if needed -->
@@ -165,7 +170,8 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary btn-sm">Send Enquiry</button>
+                                            <button type="button" class="btn btn-primary btn-sm send-enquiry">Send
+                                                Enquiry</button>
                                         </div>
                                     </div>
                                 </div>
@@ -290,4 +296,36 @@
         mainImg.src = imageUrl;
         mainLink.href = imageUrl;
     }
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.send-enquiry').on('click', function() {
+            const data = {
+                name: $('#enquiryName').val(),
+                number: $('#enquiryNumber').val(),
+                email: $('#enquiryEmail').val(),
+                location: $('#enquiryLocation').val(),
+                pincode: $('#enquiryPinCode').val(),
+                quentity: $('#enquiryQuentity').val(),
+                product_id: $('#product_id').val(),
+                message: $('#enquiryMessage').val(),
+                _token: '{{ csrf_token() }}'
+            };
+
+            $.ajax({
+                url: '{{ route('send.enquiry') }}', // Change this to your actual route
+                method: 'POST',
+                data: data,
+                success: function(response) {
+                    alert("Enquiry Sent Successfully!");
+                    // $('#enquiryForm')[0].reset();
+                    // $('#enquiryModal').modal('hide');
+                },
+                error: function(xhr) {
+                    alert("Something went wrong. Please try again.");
+                }
+            });
+        });
+    });
 </script>
