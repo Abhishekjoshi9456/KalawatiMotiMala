@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ToggleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\EnquiryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,6 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/product-update/{slug}', [ProductController::class, 'ProductEdit'])->name('update-product');
     Route::post('/product-edit/{id}', [ProductController::class, 'UpdateProduct'])->name('edit-product');
     Route::get('/product-delete/{id}', [ProductController::class, 'ProductDelete'])->name('delete-product');
+
+    Route::get('/enquiry-list', [EnquiryController::class, 'enquiryList'])->name('enquiry-list');
 });
 
 
