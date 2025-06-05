@@ -89,8 +89,9 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductShow() {
-        return view('product.view-product');
+    public function ProductShow($slug) {
+        $data = ProductModel::where('slug', $slug)->first();
+        return view('product.view-product', ['product' => $data]);
     }
 
     public function ProductEdit($slug)
