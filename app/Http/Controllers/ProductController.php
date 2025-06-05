@@ -89,7 +89,9 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductShow() {}
+    public function ProductShow() {
+        return view('product.view-product');
+    }
 
     public function ProductEdit($slug)
     {
