@@ -89,9 +89,16 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductShow($slug) {
+    public function ProductShow($slug)
+    {
         $data = ProductModel::where('slug', $slug)->first();
-        return view('product.view-product', ['product' => $data]);
+        // dd($data);
+        $productImage = ProductImageModel::where([
+            'ref_id' => $data->product_id,
+            'status' => 'Active'
+        ])->get();
+        $productImages = $productImage->pluck('product_img')->toArray();
+        return view('product.view-product', ['product' => $data, 'productImage' => $productImages]);
     }
 
     public function ProductEdit($slug)
@@ -125,7 +132,6 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         } else {
-            $product = new ProductModel();
 
             $metaImageName = $request->meta_old_img;
             if ($request->hasFile('meta_image')) {

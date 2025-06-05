@@ -7,6 +7,36 @@
     <title>Our Products | Moti Mala Maker</title>
     @include ('include.link')
     <meta name="robots" content="noindex, nofollow">
+    <style>
+        .thumb-nav img {
+            border: 2px solid #ddd;
+            transition: border-color 0.2s;
+        }
+
+        .thumb-nav img:hover,
+        .thumb-nav img.active {
+            border-color: #007bff;
+        }
+
+        .main-img {
+            width: 100%;
+            border: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .thumb-nav {
+                max-width: 100%;
+            }
+
+            .thumb-nav img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css">
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
 
 </head>
 
@@ -23,124 +53,91 @@
             </div>
             <section id="detail" class="py-5">
                 <div class="container">
-                    <div class="row align-items-start">
-                        <div class="col-xl-7 col-lg-6">
-                            <!-- Product Images & Alternates -->
-                            <div class="product-images demo-gallery d-flex">
-                                <!-- Begin Product Images Slider -->
-                                <!-- <img src="Upload_img_vdo/{{ $product->product_img }}" class="img-fluid w-100 rounded-3"> -->
-                                <div class="main-img-slider rounded-3">
-                                    <a data-fancybox="gallery"
-                                        href="">
-                                        <img src=""
-                                            class="img-fluid w-100 rounded-3">
+                    <div class="row">
+                        <!-- Left: Images -->
+
+                        <div class="col-lg-5">
+                            <div class="d-flex flex-lg-row flex-column-reverse">
+                                <!-- Main Image Left -->
+                                <div class="flex-grow-1 pe-lg-3 pe-0">
+                                    <a href="{{ asset('storage/ProductImages/' . $productImage[0]) }}"
+                                        data-fancybox="gallery" id="mainImageLink">
+                                        <img id="mainImg"
+                                            src="{{ asset('storage/ProductImages/' . $productImage[0]) }}"
+                                            class="img-fluid rounded main-img"
+                                            style="max-height: 400px; object-fit: contain; cursor: zoom-in;">
                                     </a>
                                 </div>
-                                <ul class="thumb-nav mt-0">
 
-                                    <li><img src=""
-                                            class="w-100 img-fluid"></li>
+                                <!-- Thumbnails Right -->
+                                <ul class="list-unstyled d-flex d-lg-block flex-row overflow-auto thumb-nav ps-lg-3 ps-0"
+                                    style="max-height: 400px;">
+                                    @foreach ($productImage as $index => $image)
+                                        <li class="mb-2 me-2">
+                                            <img src="{{ asset('storage/ProductImages/' . $image) }}"
+                                                class="img-thumbnail thumb-img"
+                                                style="width: 60px; height: 60px; object-fit: cover; cursor: pointer;"
+                                                onclick="updateMainImage('{{ asset('storage/ProductImages/' . $image) }}')">
+                                        </li>
+                                    @endforeach
                                 </ul>
-                                <!-- End product thumb nav -->
                             </div>
-                            <!-- End Product Images & Alternates -->
                         </div>
 
-                        <div class="col-xl-5 col-lg-6">
-                            <h2 class="fw-bold h4">{{ $product->roduct_title }}</h2>
+                        <!-- Right: Product Info -->
+                        <div class="col-lg-7 mt-4 mt-lg-0">
+                            <h2 class="fw-bold h4 mb-3">{{ $product->product_title }}</h2>
+
                             <?php
                             $originalPrice = $product->product_price;
                             $modifiedPrice = ($originalPrice / 3 + 2) * 2;
-                            $finalPrice = $modifiedPrice * 0.5; // 50% discount
+                            $finalPrice = $modifiedPrice * 0.5;
                             ?>
 
-                            <p class="fw-bold h2 d-flex align-items-center gap-3">
-                                <!-- Discounted Price -->
-                                <span class="text-primary fw-bold d-flex align-items-center">
-                                    <sup class="fs-6">₹</sup>{{number_format($finalPrice, 2) }}
-                                    <span class="fs-6">/- per piece</span>
-                                </span>
-
-                                <!-- Original Modified Price with line-through -->
-                                <span class="text-muted text-decoration-line-through fs-5">
-                                    ₹{{ number_format($modifiedPrice, 2) }}
-                                </span>
-
-                                <!-- Discount Badge -->
-                                <span class="badge bg-danger fs-6">50% OFF</span>
+                            <!-- Price -->
+                            <p class="h3 fw-bold text-primary mb-2">₹{{ number_format($finalPrice, 2) }}
+                                <span class="fs-6">/- per piece</span>
+                            </p>
+                            <p class="text-muted fs-5">
+                                <del>₹{{ number_format($modifiedPrice, 2) }}</del>
+                                <span class="badge bg-danger ms-2">50% OFF</span>
                             </p>
 
-                            <!-- <p>M.R.P. <strike class="">₹</?php echo $ViewData['product_price'] ?></strike></p> -->
-                            <button type="button" class="btn btn-sm btn-primary enquiry mb-2"
-                                data-id="{{ $product->product_title }}"
+                            <!-- Enquiry -->
+                            <button class="btn btn-primary btn-sm mb-3" data-id="{{ $product->product_title }}"
                                 data-img="">Enquiry</button>
-                            <p>Delivery charges are not included.</p>
-                            <hr>
-                            <!-- <p class="fw-bold">Offers</p>
-                    </?php
-                    $discounts = [
-                        ["label" => "Upto 100 piece", "discount" => 10, "quantity" => 100],
-                        ["label" => "Upto 500 piece", "discount" => 20, "quantity" => 500],
-                        ["label" => "Upto 1000 piece", "discount" => 50, "quantity" => 1000],
-                    ];
-                    ?>
 
-                    <div class="row g-3">
-                        </?php foreach ($discounts as $discount):
-                            // Calculate price for a single piece after discount
-                            $singleDiscountedPrice = $ViewData['product_price'] - ($ViewData['product_price'] * $discount['discount'] / 100);
-                            // Calculate total price for the specified quantity
-                            $totalPrice = $singleDiscountedPrice * $discount['quantity'];
-                        ?>
-                            <div class="col-xl col-lg-6 col-md-4">
-                                <div class="card p-3">
-                                    <b></?php echo $discount['label']; ?></b>
-                                    <p class="mb-0">
-                                        </?php echo $discount['discount']; ?>% Discount<br>
-                                        Price per piece: <span class="text-primary fw-bold">₹</span><br>
-                            </p>
-                                </div>
-                            </div>
-                        </?php endforeach; ?>
-                    </div> -->
+                            <p class="text-muted">Delivery charges are not included.</p>
 
-                            <!-- <hr> -->
-
-                            <p class="mt-3"><b>Product details</b></p>
-                            <table class="table table-bordered">
+                            <!-- Product Table -->
+                            <table class="table table-sm table-bordered mt-3">
                                 <tr>
-                                    <th width="200">Generic Name</th>
-                                    <td>Moti Mala </td>
+                                    <th width="150">Generic Name</th>
+                                    <td>Moti Mala</td>
                                 </tr>
                                 <tr>
                                     <th>Item Size</th>
                                     <td>{{ $product->product_size }} Inch</td>
                                 </tr>
-
                                 <tr>
-                                    <th>Material type</th>
+                                    <th>Material</th>
                                     <td>Plastic</td>
                                 </tr>
                                 <tr>
-
-                                <tr>
-                                    <th>Occasion type</th>
+                                    <th>Occasion</th>
                                     <td>Wedding</td>
                                 </tr>
                             </table>
+
+                            <!-- Description -->
+                            <h5 class="mt-4"><b>Description</b></h5>
+                            <p>{{ $product->pro_short_des }}</p>
+                            <p><b>{{ $product->pro_description }}</b></p>
                         </div>
-                        <div class="col-md-12 mt-3">
-                            <h2 class="h5"><b>Description</b></h2>
-                            <p>{{ $product->pro_short_des }} </p>
-                            <p><b> {{ $product->pro_description }} </b></p>
-
-                            <!-- <iframe src="https://www.shiprocket.in/dtdc-courier-rate-calculator/" width="100%" height="600px" frameborder="0" style="border: none;"></iframe> -->
-
-                        </div>
-
                     </div>
                 </div>
             </section>
+
         </div>
     </main>
     @include ('include.footer')
@@ -220,4 +217,13 @@
         $('.thumb-nav').slick('unslick'); // Destroy current instance
         initializeThumbnailSlider(); // Reinitialize based on window width
     });
+</script>
+<script>
+    function updateMainImage(imageUrl) {
+        const mainImg = document.getElementById('mainImg');
+        const mainLink = document.getElementById('mainImageLink');
+
+        mainImg.src = imageUrl;
+        mainLink.href = imageUrl;
+    }
 </script>
