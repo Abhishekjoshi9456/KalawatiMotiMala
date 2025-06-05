@@ -76,7 +76,7 @@
                                         </button>
 
                                         <button class="btn btn-link p-0 text-dark ms-2" type="button"
-                                            onclick="confirmDelete('{{ route('delete-product', $product->slug) }}')"
+                                            onclick="confirmDelete('{{ route('delete-product', $product->product_id) }}')"
                                             data-bs-toggle="tooltip" data-bs-placement="top" title="Delete">
                                             <span class="fas fa-trash-alt"></span>
                                         </button>

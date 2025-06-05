@@ -188,11 +188,11 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductDelete($slug) {
-        $product = ProductModel::where('slug', $slug)->first();
+    public function ProductDelete($id)
+    {
+        $product = ProductModel::where('product_id', $id)->first();
         if ($product) {
-            $product->del_action = 'Inactive';
-            $product->save();
+            ProductModel::where('product_id', $id)->update(['del_action' => 'Inactive']);
             return redirect()->route('product-list')->with('success', 'Product deleted successfully!');
         } else {
             return redirect()->back()->with('error', 'Product not found!');
