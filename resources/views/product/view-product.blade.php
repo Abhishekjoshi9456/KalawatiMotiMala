@@ -104,9 +104,73 @@
                             </p>
 
                             <!-- Enquiry -->
-                            <button class="btn btn-primary btn-sm mb-3" data-id="{{ $product->product_title }}"
-                                data-img="">Enquiry</button>
-
+                            <button type="button" class="btn btn-primary btn-sm mb-3 enquiry-btn"
+                                data-bs-toggle="modal" data-bs-target="#enquiryModal"
+                                data-title="{{ $product->product_title }}"
+                                data-img="{{ asset('storage/ProductImages/' . $productImage[0]) }}">
+                                Enquiry
+                            </button>
+                            {{-- open model --}}
+                            <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="enquiryModalLabel">Product Enquiry</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Product:</strong> <span id="modalProductTitle"></span></p>
+                                            <img id="modalProductImage" src="" alt="Product Image"
+                                                class="img-fluid mb-2" style="max-height: 200px;">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="enquiryName" class="form-label">Your Name</label>
+                                                    <input type="text" class="form-control" id="enquiryName"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="enquiryName" class="form-label">Your Number</label>
+                                                    <input type="text" class="form-control" id="enquiryName"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="enquiryName" class="form-label">Your Email</label>
+                                                    <input type="text" class="form-control" id="enquiryName"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="enquiryName" class="form-label">Location</label>
+                                                    <input type="text" class="form-control" id="enquiryName"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="enquiryName" class="form-label">Enter Your PinCode</label>
+                                                    <input type="text" class="form-control" id="enquiryName"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="enquiryName" class="form-label">Enter Your Quentity</label>
+                                                    <input type="text" class="form-control" id="enquiryName"
+                                                        required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="enquiryMessage" class="form-label">Type Your Message</label>
+                                                    <textarea class="form-control" id="enquiryMessage" rows="3"></textarea>
+                                                </div>
+                                                <!-- Add more fields if needed -->
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary btn-sm">Send Enquiry</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- close model --}}
                             <p class="text-muted">Delivery charges are not included.</p>
 
                             <!-- Product Table -->
