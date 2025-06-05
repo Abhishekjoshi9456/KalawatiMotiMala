@@ -188,5 +188,14 @@ class ProductController extends Controller
         }
     }
 
-    public function ProductDelete() {}
+    public function ProductDelete($slug) {
+        $product = ProductModel::where('slug', $slug)->first();
+        if ($product) {
+            $product->del_action = 'Inactive';
+            $product->save();
+            return redirect()->route('product-list')->with('success', 'Product deleted successfully!');
+        } else {
+            return redirect()->back()->with('error', 'Product not found!');
+        }
+    }
 }
