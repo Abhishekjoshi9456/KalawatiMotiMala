@@ -73,27 +73,7 @@
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
 
                             </div>
-                            <div class="row g-2" id="existingImagesWrapper">
-                                @foreach ($productImage as $index => $image)
-                                    <div class="col-4 col-sm-3 col-md-2 position-relative image-box"
-                                        data-index="{{ $index }}">
-                                        <input type="hidden" name="proimageMulti[]" value="{{ $image }}">
-
-                                        <div class="border rounded-3 p-1 position-relative">
-                                            <img src="{{ asset('storage/ProductImages/' . $image) }}"
-                                                alt="Product Image" class="img-fluid rounded"
-                                                style="aspect-ratio: 1; object-fit: cover; width: 100%;">
-
-                                            <button type="button"
-                                                class="btn btn-sm btn-danger rounded-circle position-absolute top-0 end-0 translate-middle remove-image"
-                                                data-index="{{ $index }}"
-                                                style="z-index: 2; width: 1.5rem; height: 1.5rem; line-height: 1rem; padding: 0;">
-                                                &times;
-                                            </button>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                          @livewire('edit-product-images', ['productId' => $product->product_id])
 
                         </div>
                         @error('pro_imageMulti')
@@ -237,16 +217,3 @@
     });
 </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const wrapper = document.getElementById('existingImagesWrapper');
-
-        wrapper.addEventListener('click', function(e) {
-            if (e.target.classList.contains('remove-image')) {
-                const index = e.target.getAttribute('data-index');
-                const box = wrapper.querySelector('.image-box[data-index="' + index + '"]');
-                if (box) box.remove();
-            }
-        });
-    });
-</script>
