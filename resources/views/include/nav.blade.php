@@ -3,7 +3,8 @@
         <div class="container-fluid">
             <!-- Brand -->
             <a class="navbar-brand" href="#">
-               <img src="{{ asset("asset/images/logo.png") }}" alt="Kalawati Moti Mala" class="img-fluid" width="160" height="60">
+                <img src="{{ asset('asset/images/logo.png') }}" alt="Kalawati Moti Mala" class="img-fluid" width="160"
+                    height="60">
             </a>
 
             <!-- Mobile Toggle Button -->
@@ -44,9 +45,31 @@
 
                 <!-- Right Side Navigation -->
                 <ul class="navbar-nav">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="notification-badge">2</span> <!-- Cart item count -->
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <h6 class="dropdown-header">Cart Items</h6>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-box me-2"></i> Moti Mala x2</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-box me-2"></i> Rudraksha x1</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item text-center" href="#">Go to Cart</a></li>
+                        </ul>
+                    </li>
                     <!-- Notifications -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="fas fa-bell"></i>
                             <span class="notification-badge">3</span>
                         </a>
@@ -54,11 +77,13 @@
                             <li>
                                 <h6 class="dropdown-header">Notifications</h6>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-shopping-cart me-2"></i>New order
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-shopping-cart me-2"></i>New
+                                    order
                                     received</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>New customer
                                     registered</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-exclamation-triangle me-2"></i>Low
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="fas fa-exclamation-triangle me-2"></i>Low
                                     stock alert</a></li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -69,7 +94,8 @@
 
                     <!-- Messages -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             <i class="fas fa-envelope"></i>
                             <span class="notification-badge">2</span>
                         </a>
@@ -93,14 +119,18 @@
                             <i class="fas fa-user-circle me-1"></i>Admin
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i>Help</a>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="fas fa-question-circle me-2"></i>Help</a>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="fas fa-sign-out-alt me-2"></i>Logout</a>
                             </li>
                         </ul>
                     </li>
