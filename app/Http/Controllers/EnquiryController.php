@@ -39,10 +39,9 @@ class EnquiryController extends Controller
 
             if (!$enquiry->save()) {
                 return response()->json(['error' => 'Failed to send enquiry. Please try again later.']);
+            }else{
+                return response()->json(['success' => 'Enquiry sent successfully!']);
             }
         }
-
-
-        return  'Enquiry sent successfully!';
     }
 }
