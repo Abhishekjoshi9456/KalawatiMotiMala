@@ -86,7 +86,6 @@
                                                 class="img-thumbnail thumb-img"
                                                 style="width: 60px; height: 60px; object-fit: cover; cursor: pointer;"></video>
                                         </li>
-
                                     @endif
 
                                 </ul>
@@ -179,7 +178,8 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary btn-sm"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary btn-sm send-enquiry">Send
+                                            <button type="button" class="btn btn-primary btn-sm"
+                                                id="sendEnquiryBtn">Send
                                                 Enquiry</button>
                                         </div>
                                     </div>
@@ -309,7 +309,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.send-enquiry').on('click', function() {
+        $('#sendEnquiryBtn').on('click', function() {
             const data = {
                 name: $('#enquiryName').val(),
                 number: $('#enquiryNumber').val(),
@@ -323,13 +323,14 @@
             };
 
             $.ajax({
-                url: '{{ route('send.enquiry') }}', // Change this to your actual route
+                url: '{{ route('send.enquiry') }}',
                 method: 'POST',
                 data: data,
                 success: function(response) {
-                    alert(response);
-                    // $('#enquiryForm')[0].reset();
-                    // $('#enquiryModal').modal('hide');
+                    alert("Enquiry sent successfully!");
+                    $('#enquiryModal').modal('hide');
+                    // Optional: reset form
+                    $('#enquiryModal form')[0].reset();
                 },
                 error: function(xhr) {
                     alert("Something went wrong. Please try again.");
