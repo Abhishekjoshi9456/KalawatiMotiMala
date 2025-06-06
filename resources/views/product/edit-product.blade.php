@@ -95,7 +95,7 @@
                     <div class="form-group mb-3">
                         <label for="thumbnail_img">Upload Thumbnail Image</label>
                         <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img"
-                            accept="video/*">
+                            accept="image/*">
 
                         <input type="hidden" value="{{ $product->thumbnail_img }}" name="thumbnail_old_img" value="{{old('thumbnail_old_img', $product->thumbnail_img) }}">
 
