@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\EnquiryModel;
 
 class EnquiryController extends Controller
 {
@@ -25,7 +26,22 @@ class EnquiryController extends Controller
         ]);
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
+        }else{
+            $enquiry = new EnquiryModel();
+            $enquiry->product_id = $request->input('product_id');
+            $enquiry->name = $request->input('name');
+            $enquiry->email = $request->input('email');
+            $enquiry->number = $request->input('number');
+            $enquiry->location = $request->input('location');
+            $enquiry->pincode = $request->input('pincode');
+            $enquiry->quentity = $request->input('quentity');
+            $enquiry->message = $request->input('message');
+
+            if (!$enquiry->save()) {
+                return response()->json(['error' => 'Failed to send enquiry. Please try again later.']);
+            }
         }
+
 
         return  'Enquiry sent successfully!';
     }
