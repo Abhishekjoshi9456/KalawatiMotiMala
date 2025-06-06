@@ -59,7 +59,7 @@ class ProductController extends Controller
             $product->thumbnail_img = $request->thumbnail_img;
             $product->del_action = 'Active';
 
-            if($request->hasFile('thumbnail_img')) {
+            if ($request->hasFile('thumbnail_img')) {
                 $thumbnail = $request->file('thumbnail_img');
                 $thumbnailName = time() . '_' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
                 $thumbnail->move(public_path('storage/ProductImages'), $thumbnailName);
@@ -134,6 +134,7 @@ class ProductController extends Controller
             'meta_keyword' => 'required|string|max:255',
             'meta_description' => 'required|string|max:500',
             'meta_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'thumbnail_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'product_size' => 'required|digits_between:1,10',
             'product_price' => 'required|numeric|min:0',
             'modal_id' => 'required|string|max:100',
@@ -141,6 +142,14 @@ class ProductController extends Controller
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         } else {
+
+            $thumbnailName = $request->thumbnail_img_old;
+            if ($request->hasFile('thumbnail_img')) {
+                $thumbnail = $request->file('thumbnail_img');
+                $thumbnailName = time() . '_' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+                $thumbnail->move(public_path('storage/ProductImages'), $thumbnailName);
+                // $product->thumbnail_img = $thumbnailName;
+            }
 
             $metaImageName = $request->meta_old_img;
             if ($request->hasFile('meta_image')) {
@@ -171,7 +180,8 @@ class ProductController extends Controller
                 'modal_id' => $request->modal_id,
                 'del_action' => 'Active',
                 'meta_image' => $metaImageName,
-                'pro_video' => $videoName
+                'pro_video' => $videoName,
+                'thumbnail_img' => $thumbnailName
             ];
 
 
