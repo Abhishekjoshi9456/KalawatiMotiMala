@@ -87,6 +87,14 @@
                         @enderror
                     </div>
 
+                    <div class="form-group mb-3">
+                        <label for="thumbnail_img">Upload Thumbnail Image</label>
+                        <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img" accept="video/*">
+                        @error('thumbnail_img')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
                     <!-- Meta Keyword -->
                     <div class="form-group mb-3">
                         <label for="meta_keyword">Meta Keyword <span class="text-danger">*</span></label>

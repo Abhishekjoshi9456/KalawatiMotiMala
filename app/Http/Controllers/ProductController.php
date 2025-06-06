@@ -36,6 +36,7 @@ class ProductController extends Controller
             'meta_keyword' => 'required|string|max:255',
             'meta_description' => 'required|string|max:500',
             'meta_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'thumbnail_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'product_size' => 'required|digits_between:1,10',
             'product_price' => 'required|numeric|min:0',
             'modal_id' => 'required|string|max:100',
@@ -55,7 +56,15 @@ class ProductController extends Controller
             $product->product_size = $request->product_size;
             $product->product_price = $request->product_price;
             $product->modal_id = $request->modal_id;
+            $product->thumbnail_img = $request->thumbnail_img;
             $product->del_action = 'Active';
+
+            if($request->hasFile('thumbnail_img')) {
+                $thumbnail = $request->file('thumbnail_img');
+                $thumbnailName = time() . '_' . uniqid() . '.' . $thumbnail->getClientOriginalExtension();
+                $thumbnail->move(public_path('storage/ProductImages'), $thumbnailName);
+                $product->thumbnail_img = $thumbnailName;
+            }
 
             if ($request->hasFile('meta_image')) {
                 $metaImage = $request->file('meta_image');
