@@ -97,9 +97,12 @@
                         <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img"
                             accept="video/*">
 
-                        <input type="text" value="{{ $product->thumbnail_img }}" name="thumbnail_old_img" hidden>
-                         <img src="{{ asset('storage/ProductImages/' . $product->thumbnail_img) }}" alt=""
-                            class="img-fluid bg-white p-2 rounded-3" width="50"></td>
+                        <input type="hidden" value="{{ $product->thumbnail_img }}" name="thumbnail_old_img" value="{{old('thumbnail_old_img', $product->thumbnail_img) }}">
+
+                         @if($product->thumbnail_img)
+                            <img src="{{ asset('storage/ProductImages/' . $product->thumbnail_img) }}" alt=""
+                                class="img-fluid bg-white p-2 rounded-3" width="50">
+                        @endif
                         @error('thumbnail_img')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -128,8 +131,12 @@
                         <input type="file" class="form-control" name="meta_image" id="meta_image" accept="image/*">
 
                         <input type="hidden" value="{{ $product->meta_image }}" name="meta_old_img">
-                        <img src="{{ asset('storage/ProductImages/' . $product->meta_image) }}" alt=""
+                        @if ($product->meta_image)
+                             <img src="{{ asset('storage/ProductImages/' . $product->meta_image) }}" alt=""
                             class="img-fluid bg-white p-2 rounded-3" width="50"></td>
+
+                        @endif
+
                         @error('meta_image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
