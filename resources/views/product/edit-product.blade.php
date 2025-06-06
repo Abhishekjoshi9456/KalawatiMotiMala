@@ -73,7 +73,7 @@
                                 <input type="file" class="form-control" name="pro_imageMulti[]" accept="image/*">
 
                             </div>
-                          @livewire('edit-product-images', ['productId' => $product->product_id])
+                            @livewire('edit-product-images', ['productId' => $product->product_id])
 
                         </div>
                         @error('pro_imageMulti')
@@ -92,6 +92,18 @@
                         <input type="hidden" value="{{ $product->pro_video }}" name="pro_video_old">
                     </div>
 
+                    <div class="form-group mb-3">
+                        <label for="thumbnail_img">Upload Thumbnail Image</label>
+                        <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img"
+                            accept="video/*">
+
+                        <input type="text" value="{{ $product->thumbnail_img }}" name="thumbnail_old_img" hidden>
+                         <img src="{{ asset('storage/ProductImages/' . $product->thumbnail_img) }}" alt=""
+                            class="img-fluid bg-white p-2 rounded-3" width="50"></td>
+                        @error('thumbnail_img')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <!-- Meta Keyword -->
                     <div class="form-group mb-3">
                         <label for="meta_keyword">Meta Keyword <span class="text-danger">*</span></label>
@@ -113,8 +125,7 @@
                     <!-- Meta Image -->
                     <div class="form-group mb-3">
                         <label for="meta_image">Upload Meta Image <span class="text-danger">*</span></label>
-                        <input type="file" class="form-control" name="meta_image" id="meta_image"
-                            accept="image/*">
+                        <input type="file" class="form-control" name="meta_image" id="meta_image" accept="image/*">
 
                         <input type="hidden" value="{{ $product->meta_image }}" name="meta_old_img">
                         <img src="{{ asset('storage/ProductImages/' . $product->meta_image) }}" alt=""
@@ -216,4 +227,3 @@
         });
     });
 </script>
-
