@@ -33,6 +33,19 @@
         }
     </script>
     <meta name="p:domain_verify" content="94546f0f9669442ae42e9487fc4b58d6" />
+    <style>
+        #autoScrollWrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+        }
+
+        #autoScrollBlogWrapper {
+            overflow-x: auto;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -263,28 +276,26 @@
                             class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
-            <div class="row g-3">
-                @foreach ($blogs as $blog)
-                    <div class="col-xl-3 col-lg-6 col-sm-6">
-                        <a href="{{route('blog.show', $blog->slug)}}"
-                            class="card border-0 bg-white p-2 blog-card text-decoration-none overflow-hidden blog-item h-100">
-                            <img src="{{ asset('storage/BlogImages/' . $blog->blog_photo) }}"
-                                alt="{{$blog->meta_title}}" class="w-100 img-fluid rounded-3" width="317"
-                                height="317">
-                            <div class="card-body p-2">
-                                <h2 class="fs-6 mb-1 fw-bold mb-2">{{ $blog->meta_title }}</h2>
-                                <p class="mb-2 fs-0">
-                                    {{$blog->meta_description}}
-                                </p>
-                                <p class="text-primary fw-bold">
-                                    View Details
-                                </p>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-
+            <div id="autoScrollBlogWrapper" class="overflow-auto">
+                <div class="d-flex flex-nowrap gap-3" id="autoScrollBlogContent">
+                    @foreach ($blogs as $blog)
+                        <div class="col-xl-3 col-lg-6 col-sm-6">
+                            <a href="{{ route('blog.show', $blog->slug) }}"
+                                class="card border-0 bg-white p-2 blog-card text-decoration-none overflow-hidden blog-item h-100">
+                                <img src="{{ asset('storage/BlogImages/' . $blog->blog_photo) }}"
+                                    alt="{{ $blog->meta_title }}" class="w-100 img-fluid rounded-3" width="317"
+                                    height="317">
+                                <div class="card-body p-2">
+                                    <h2 class="fs-6 mb-1 fw-bold mb-2">{{ $blog->meta_title }}</h2>
+                                    <p class="mb-2 fs-0">{{ $blog->meta_description }}</p>
+                                    <p class="text-primary fw-bold">View Details</p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+
         </div>
     </section>
     <section class="about-sec py-3">
@@ -346,6 +357,48 @@
         // Call the function to set min-height after the page has loaded
         window.addEventListener('load', setMinHeightToMax);
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const wrapper = document.getElementById('autoScrollWrapper');
+
+            let scrollSpeed = 1; // pixels per step
+            let scrollInterval = 20; // ms
+            let direction = 1; // 1 = right, -1 = left
+
+            setInterval(() => {
+                wrapper.scrollLeft += scrollSpeed * direction;
+
+                // Reverse direction if end reached
+                if (
+                    wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth ||
+                    wrapper.scrollLeft <= 0
+                ) {
+                    direction *= -1;
+                }
+            }, scrollInterval);
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const wrapper = document.getElementById('autoScrollBlogWrapper');
+
+            let scrollSpeed = 1; // pixels per step
+            let scrollInterval = 20; // ms
+            let direction = 1; // 1 = right, -1 = left
+
+            setInterval(() => {
+                wrapper.scrollLeft += scrollSpeed * direction;
+
+                if (
+                    wrapper.scrollLeft + wrapper.clientWidth >= wrapper.scrollWidth ||
+                    wrapper.scrollLeft <= 0
+                ) {
+                    direction *= -1;
+                }
+            }, scrollInterval);
+        });
+    </script>
+
 </body>
 
 </html>
