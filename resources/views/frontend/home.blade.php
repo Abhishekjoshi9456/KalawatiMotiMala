@@ -15,8 +15,8 @@
     <meta property="og:url" content="https://www.kalawatimotimala.com">
     <link rel="canonical" href="https://www.kalawatimotimala.com" />
     @include("include.link")
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.css">
+    <link rel="stylesheet" href="{{asset('asset/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{asset('asset/css/owl.theme.default.css')}}">
     <script type="application/ld+json">
         {
             "@context": "https://schema.org/",
@@ -107,7 +107,7 @@
                     <a href="our-products" class="btn btn-outline-primary">See All Pearls <i class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
-            @include("frontend.includes.all-product.php")
+            @include("frontend.include.all_product")
         </div>
     </section>
     <div class="pt-3">
@@ -116,7 +116,7 @@
             <div class="row g-3">
                 <div class="col-xl-3 col-lg-6 col-sm-6">
                     <a href="moti-mala" class="card p-2 border-0 text-decoration-none rounded-3 overflow-hidden h-100">
-                        <img width="429" height="306" src="images/moti-mala-for-baraatis.jpg" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Explore Our Categories">
+                        <img width="429" height="306" src="{{asset('asset/images/moti-mala-for-baraatis.jpg')}}" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Explore Our Categories">
                         <h2 class="h6 fw-bold">Classic Moti Mala for Baraatis</h2>
                         <p class="text-dark">Welcome Moti malas for baraatis. Designed for guests (baraatis) to wear and keep as remembrance.</p>
                         <div class="d-flex justify-content-between gap-2">
@@ -127,7 +127,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 col-sm-6">
                     <a href="barati-moti-mala" class="card p-2 border-0 text-decoration-none rounded-3 overflow-hidden h-100">
-                        <img width="429" height="306" src="images/moti-mala-for-jagran.jpg" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Moti Mala for Jagran's Mata">
+                        <img width="429" height="306" src="{{asset('asset/images/moti-mala-for-jagran.jpg')}}" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Moti Mala for Jagran's Mata">
                         <h2 class="h6 fw-bold">Moti Mala for Jagran's Mata</h2>
                         <p class="text-dark">Great for religious functions such as jagrans and bhajans, as these malas bring the group together and together to show devotion.</p>
                         <div class="d-flex justify-content-between gap-2">
@@ -138,7 +138,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 col-sm-6">
                     <a href="moti-mala" class="card p-2 border-0 text-decoration-none rounded-3 overflow-hidden h-100">
-                        <img width="429" height="306" src="images/moti-mala-for-guests.jpg" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Welcome Moti Mala, Guest">
+                        <img width="429" height="306" src="{{asset('asset/images/moti-mala-for-guests.jpg')}}" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Welcome Moti Mala, Guest">
                         <h2 class="h6 fw-bold">Welcome Moti Mala, Guest</h2>
                         <p class="text-dark">With pearl welcome garlands you are able to welcome guests to your event, weddings, Poojas gracefully.</p>
                         <div class="d-flex justify-content-between gap-2">
@@ -149,7 +149,7 @@
                 </div>
                 <div class="col-xl-3 col-lg-6 col-sm-6">
                     <a href="moti-mala" class="card p-2 border-0 text-decoration-none rounded-3 overflow-hidden h-100">
-                        <img width="429" height="306" src="images/moti-mala-for-events.jpg" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Welcome Moti Mala for Events">
+                        <img width="429" height="306" src="{{asset('asset/images/moti-mala-for-events.jpg')}}" class="rounded-3 mb-3 w-100 img-fluid h-auto" alt="Welcome Moti Mala for Events">
                         <h2 class="h6 fw-bold">Welcome Moti Mala for Events</h2>
                         <p class="text-dark">Welcome with our Moti garlands for your events, suitable for weddings, poojas and other functions.</p>
                         <div class="d-flex justify-content-between gap-2">
