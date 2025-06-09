@@ -14,7 +14,7 @@
     <meta property="og:image:alt" content="Beautiful Moti Mala for Wedding Swagat" />
     <meta property="og:url" content="https://www.kalawatimotimala.com">
     <link rel="canonical" href="https://www.kalawatimotimala.com" />
-    @include("include.link")
+    @include("frontend.include.link")
     <link rel="stylesheet" href="{{asset('asset/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('asset/css/owl.theme.default.css')}}">
     <script type="application/ld+json">
