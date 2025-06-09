@@ -34,7 +34,7 @@ class EnquiryController extends Controller
             $enquiry->mobile = $request->input('number');
             $enquiry->location = $request->input('location');
             $enquiry->pincode = $request->input('pincode');
-            $enquiry->quentity = $request->input('quentity');
+            $enquiry->quantity = $request->input('quentity');
             $enquiry->message = $request->input('message');
 
             if (!$enquiry->save()) {
