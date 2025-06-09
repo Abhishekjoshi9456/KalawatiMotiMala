@@ -80,7 +80,7 @@
                                                 onclick="updateMainImage('{{ asset('storage/ProductImages/' . $image) }}')">
                                         </li>
                                     @endforeach
-                                    @if ($product->pro_video)
+                                    @if (!empty($product->pro_video))
                                         <li class="mb-2 me-2">
                                             <video src="{{ asset('storage/ProductImages/' . $product->pro_video) }}"
                                                 class="img-thumbnail thumb-img"
