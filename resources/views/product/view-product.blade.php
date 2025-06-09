@@ -131,7 +131,7 @@
                                         <div class="modal-body">
                                             <p><strong>Product:</strong> <span id="modalProductTitle"></span></p>
                                             <img id="modalProductImage" src="{{asset('storage/ProductImages/' . $product->meta_image) }}" alt="Product Image"
-                                                class="img-fluid mb-2" style="max-height: 5s0px;">
+                                                class="img-fluid mb-2" style="max-height: 50px;">
                                             <form>
                                                 <div class="mb-3">
                                                     <input type="hidden" name="product_id" id="product_id"
