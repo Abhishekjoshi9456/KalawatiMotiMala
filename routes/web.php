@@ -8,6 +8,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EnquiryController;
 
 Route::get('/', function () {
+    return view('frontend.home');
+})->name('home');
+
+Route::get('/admin', function () {
     return view('welcome');
 });
 
