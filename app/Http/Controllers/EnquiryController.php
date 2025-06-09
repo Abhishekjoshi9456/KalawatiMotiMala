@@ -31,7 +31,7 @@ class EnquiryController extends Controller
             $enquiry->product_id = $request->input('product_id');
             $enquiry->name = $request->input('name');
             $enquiry->email = $request->input('email');
-            $enquiry->number = $request->input('number');
+            $enquiry->mobile = $request->input('number');
             $enquiry->location = $request->input('location');
             $enquiry->pincode = $request->input('pincode');
             $enquiry->quentity = $request->input('quentity');
