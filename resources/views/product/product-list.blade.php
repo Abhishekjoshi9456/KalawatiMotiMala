@@ -14,7 +14,7 @@
 
 <body>
     @include ('include.nav')
-
+    @include('include.flash-message')
     <!-- Main Content Area -->
     <main class="main-content">
         <div class="container-fluid">
