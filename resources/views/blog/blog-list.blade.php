@@ -14,7 +14,7 @@
 
 <body>
     @include ('include.nav')
-
+    @include('include.flash-message')
     <!-- Main Content Area -->
     <main class="main-content">
         <div class="container-fluid">
@@ -25,7 +25,7 @@
                         <tr>
                             <th colspan="3">Blog List</th>
                             <th colspan="3" class="text-end">
-                                <a href="{{ route('add-blogs')}}" class="btn btn-primary"><i
+                                <a href="{{ route('add-blogs') }}" class="btn btn-primary"><i
                                         class="fas fa-plus me-2"></i> Add
                                     Blog</a>
                             </th>
@@ -41,16 +41,16 @@
                     </thead>
                     <tbody>
                         @foreach ($blogData as $index => $blog)
-
                             <tr>
                                 <td>{{ $blogData->firstItem() + $index }}</td>
-                                <td><img src="{{ asset('storage/BlogImages/' . $blog->blog_photo)}}" alt=""
+                                <td><img src="{{ asset('storage/BlogImages/' . $blog->blog_photo) }}" alt=""
                                         class="img-fluid bg-white p-2 rounded-3" width="100"></td>
-                                <td>{{$blog->meta_title}}</td>
-                                <td>{{$blog->meta_description}}</td>
-                                <td class="text-center"> <button class="btn btn-link toggle-btn" type="button" data-id="{{ $blog->blog_id }}">
+                                <td>{{ $blog->meta_title }}</td>
+                                <td>{{ $blog->meta_description }}</td>
+                                <td class="text-center"> <button class="btn btn-link toggle-btn" type="button"
+                                        data-id="{{ $blog->blog_id }}">
                                         <i
-                                            class="{{ $blog->active_status == '1' ? "fas fa-toggle-on" : "fas fa-toggle-off" }}"></i>
+                                            class="{{ $blog->active_status == '1' ? 'fas fa-toggle-on' : 'fas fa-toggle-off' }}"></i>
                                     </button>
                                     <span
                                         class="status-text {{ $blog->active_status == '1' ? 'bg-success' : 'bg-danger' }}"
@@ -60,8 +60,8 @@
                                 </td>
                                 <td class="text-end">
                                     <div>
-                                        <button class="btn btn-link p-0 text-dark" type="button" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="View">
+                                        <button class="btn btn-link p-0 text-dark" type="button"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="View">
                                             <a href="{{ route('blog.show', $blog->slug) }}"><span
                                                     class="fas fa-eye"></span></a>
                                         </button>
@@ -81,7 +81,6 @@
                                     </div>
                                 </td>
                             </tr>
-
                         @endforeach
                     </tbody>
                 </table>
@@ -107,8 +106,8 @@
     }
 </script>
 <script>
-    $(document).ready(function () {
-        $('.toggle-btn').click(function () {
+    $(document).ready(function() {
+        $('.toggle-btn').click(function() {
             const button = $(this);
             const icon = button.find('i');
             const isOn = icon.hasClass('fa-toggle-on');
@@ -127,11 +126,11 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                success: function (response) {
+                success: function(response) {
                     console.log('Success:', response);
                     location.reload();
                 },
-                error: function (xhr) {
+                error: function(xhr) {
                     console.error('Error:', xhr);
 
                     // Revert icon toggle on error

@@ -12,7 +12,7 @@
 
 <body>
     @include ('include.nav')
-
+    @include('include.flash-message')
     <!-- Main Content Area -->
     <main class="main-content">
         <div class="container-fluid">
@@ -89,7 +89,8 @@
 
                     <div class="form-group mb-3">
                         <label for="thumbnail_img">Upload Thumbnail Image</label>
-                        <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img" accept="image/*">
+                        <input type="file" class="form-control" name="thumbnail_img" id="thumbnail_img"
+                            accept="image/*">
                         @error('thumbnail_img')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
