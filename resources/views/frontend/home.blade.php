@@ -132,7 +132,7 @@
                     <h2 class="fw-bold mb-3 h3">Moti Mala Design for Barat Swagat</h2>
                 </div>
                 <div class="col-md-2 text-end">
-                    <a href="our-products" class="btn btn-outline-primary">See All Pearls <i
+                    <a href="{{route('our.products')}}" class="btn btn-outline-primary">See All Pearls <i
                             class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>
@@ -272,7 +272,7 @@
                     <h2 class="fw-bold mb-3 h3">Our Blogs</h2>
                 </div>
                 <div class="col-md-2 text-end">
-                    <a href="blog/" class="btn btn-outline-primary">See All Blogs <i
+                    <a href="{{route('blogs')}}" class="btn btn-outline-primary">See All Blogs <i
                             class="fas fa-arrow-right ms-1"></i></a>
                 </div>
             </div>

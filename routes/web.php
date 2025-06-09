@@ -9,6 +9,13 @@ use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/our-products', [HomeController::class, 'ourProduct'])->name('our.products');
+Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');
+Route::get('/moti-mala', [HomeController::class, 'MotiMala'])->name('moti-mala');
+Route::get('/barati-moti-mala', [HomeController::class, 'BhartiMotiMala'])->name('barati-moti-mala');
+
+
+
 Route::get('/admin', function () {
     return view('welcome');
 });

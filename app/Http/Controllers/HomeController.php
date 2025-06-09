@@ -14,4 +14,28 @@ class HomeController extends Controller
        $blogData = BlogModel::where('active_status', 1)->orderBy('blog_id', 'desc')->get();
         return view('frontend.home', ['products' => $data, 'blogs' => $blogData]);
     }
+
+    public function ourProduct()
+    {
+        $data = ProductModel::where('status', 1)->orderBy('product_id', 'desc')->get();
+        return view('frontend.our-product', ['products' => $data]);
+    }
+
+    public function blog()
+    {
+        $blogData = BlogModel::where('active_status', 1)->orderBy('blog_id', 'desc')->get();
+        return view('frontend.our-blog', ['blogs' => $blogData]);
+    }
+
+    public function MotiMala()
+    {
+        $data = ProductModel::where(['status'=> 1, 'product_category'=>'Moti Mala'])->orderBy('product_id', 'desc')->get();
+        return view('frontend.moti-mala', ['products' => $data]);
+    }
+
+    public function BhartiMotiMala()
+    {
+        $data = ProductModel::where(['status'=> 1, 'product_category'=>'Barati Moti Mala'])->orderBy('product_id', 'desc')->get();
+        return view('frontend.barati-moti-mala', ['products' => $data]);
+    }
 }
