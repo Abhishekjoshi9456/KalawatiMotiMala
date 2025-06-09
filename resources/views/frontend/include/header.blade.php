@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-white border-bottom border-primary border-2">
     <div class="container">
         <a class="navbar-brand" href="">
-            <img src="/images/logo.png" alt="Kalawati Moti Mala" class="img-fluid" width="160" height="60">
+            <img src="{{asset('asset/images/logo.png')}}" alt="Kalawati Moti Mala" class="img-fluid" width="160" height="60">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

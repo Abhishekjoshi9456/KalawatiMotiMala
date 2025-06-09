@@ -103,10 +103,10 @@
     Enquiry
 </button>
 <div class="whatsapp-icon fixed-icon">
-    <a href="https://www.wasap.my/9582562695" target="_blank"><img src="images/icons/whatsap.png" alt="whatsap" class="img-fluid" width="45" height="45"> </a>
+    <a href="https://www.wasap.my/9582562695" target="_blank"><img src="{{asset('asset/images/icons/whatsap.png')}}" alt="whatsap" class="img-fluid" width="45" height="45"> </a>
 </div>
 <div class="call-icon fixed-icon">
-    <a href="tel:9027339904" target="_blank"><img src="images/icons/phone-call.png" alt="phone-call" class="img-fluid" width="45" height="45"> </a>
+    <a href="tel:9027339904" target="_blank"><img src="{{asset('asset/images/icons/phone-call.png')}}" alt="phone-call" class="img-fluid" width="45" height="45"> </a>
 </div>
 @include('include.script')
 <script>

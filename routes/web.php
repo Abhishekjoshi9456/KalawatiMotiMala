@@ -6,11 +6,9 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ToggleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\HomeController;
 
-Route::get('/', function () {
-    return view('frontend.home');
-})->name('home');
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/admin', function () {
     return view('welcome');
 });
