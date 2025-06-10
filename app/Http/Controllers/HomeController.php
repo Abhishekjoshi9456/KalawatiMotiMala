@@ -38,4 +38,10 @@ class HomeController extends Controller
         $data = ProductModel::where(['status'=> 1, 'product_category'=>'Barati Moti Mala'])->orderBy('product_id', 'desc')->get();
         return view('frontend.barati-moti-mala', ['products' => $data]);
     }
+
+    public function MalaForGuests()
+    {
+        $data = ProductModel::where(['status'=> 1, 'product_category'=>'Mala For Guests'])->orderBy('product_id', 'desc')->get();
+        return view('frontend.mala-for-guests', ['products' => $data]);
+    }
 }

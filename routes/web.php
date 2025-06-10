@@ -15,6 +15,7 @@ Route::get('/moti-mala', [HomeController::class, 'MotiMala'])->name('moti-mala')
 Route::get('/barati-moti-mala', [HomeController::class, 'BhartiMotiMala'])->name('barati-moti-mala');
 Route::get('/blog-show/{slug}', [BlogController::class, 'BlogShow'])->name('blog.show');
 Route::get('/product-show/{slug}', [ProductController::class, 'ProductShow'])->name('product.show');
+Route::get('/mala-for-guests', [HomeController::class, 'MalaForGuests'])->name('mala-for-guests');
 
 
 

@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll container justify-content-end">
                 <li class="nav-item me-3"><a class="nav-link text-dark fw-bold" href="{{route('moti-mala')}}">Moti Mala</a></li>
                 <li class="nav-item me-3"><a class="nav-link text-dark fw-bold" href="{{route('barati-moti-mala')}}">Mala for Baraatis</a></li>
-                <li class="nav-item me-3"><a class="nav-link text-dark fw-bold" href="mala-for-guests">Mala for Guests</a></li>
+                <li class="nav-item me-3"><a class="nav-link text-dark fw-bold" href="{{route('mala-for-guests')}}">Mala for Guests</a></li>
                 <li class="nav-item me-3"><a class="nav-link text-dark fw-bold" href="mala-for-events">Mala for Events</a></li>
                 <li class="nav-item me-3">
                     <a class="nav-link text-dark fw-bold" href="contact-us">Contact Us</a>
