@@ -114,7 +114,7 @@
                     strands that creates a bold appearance and matches well with every attire like sherwani or suit.
                 </li>
                 <li>Another design that is quite in demand is the moti mala designed with the combination of pearls and
-                    other elements like stones and beads. This type of <a href="barati-moti-mala"
+                    other elements like stones and beads. This type of <a href="{{route('barati-moti-mala')}}"
                         class="fw-bold text-primary text-decoration-none">welcome mala for barati</a> gives a modern
                     touch by keeping the traditional authenticity. </li>
                 <li>The craftsmen of moti mala also focuses on the colours of malas as people have different preferences
