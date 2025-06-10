@@ -13,6 +13,8 @@ Route::get('/our-products', [HomeController::class, 'ourProduct'])->name('our.pr
 Route::get('/blogs', [HomeController::class, 'blog'])->name('blogs');
 Route::get('/moti-mala', [HomeController::class, 'MotiMala'])->name('moti-mala');
 Route::get('/barati-moti-mala', [HomeController::class, 'BhartiMotiMala'])->name('barati-moti-mala');
+Route::get('/blog-show/{slug}', [BlogController::class, 'BlogShow'])->name('blog.show');
+Route::get('/product-show/{slug}', [ProductController::class, 'ProductShow'])->name('product.show');
 
 
 
@@ -33,7 +35,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/blog-list', [BlogController::class, 'blogList'])->name('blog-list');
     Route::get('/add-blog', [BlogController::class, 'addBlog'])->name('add-blogs');
     Route::post('/insert-blog', [BlogController::class, 'InsertBlog'])->name('insert-blogs');
-    Route::get('/blog-show/{slug}', [BlogController::class, 'BlogShow'])->name('blog.show');
     Route::get('/update-blog/{slug}', [BlogController::class, 'UpdateBlog'])->name('update-blog');
     Route::post('/update/{slug}', [BlogController::class, 'updateBlogsData'])->name('update.blogs');
     Route::get('/delete-blog/{id}', [BlogController::class, 'DeleteBlog'])->name('delete-blog');
@@ -43,7 +44,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/add-product', [ProductController::class, 'addProduct'])->name('add-product');
     Route::post('/insert-product', [ProductController::class, 'insertProduct'])->name('insert-product');
 
-    Route::get('/product-show/{slug}', [ProductController::class, 'ProductShow'])->name('product.show');
     Route::get('/product-update/{slug}', [ProductController::class, 'ProductEdit'])->name('update-product');
     Route::post('/product-edit/{id}', [ProductController::class, 'UpdateProduct'])->name('edit-product');
     Route::get('/product-delete/{id}', [ProductController::class, 'ProductDelete'])->name('delete-product');
